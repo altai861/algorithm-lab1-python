@@ -1,6 +1,8 @@
 import unittest
 from file_reader import read_file
 
+# python3 -m unittest test_file_reader.py
+
 class TestFileReader(unittest.TestCase):
     def test_file_not_found(self):
         with self.assertRaises(FileNotFoundError):

@@ -1,3 +1,5 @@
+import sys
+
 def read_file(filepath):
     try: 
         with open(filepath, 'r') as file:
@@ -10,13 +12,16 @@ def read_file(filepath):
         raise Exception(f"Unexpected error occurred")
 
 def main():
-    try:
-        print(read_file("lab2.txt"))
-    except (FileNotFoundError, PermissionError) as e:
-        print(f"An error occurred: {e}")
+    if len(sys.argv) < 2:
+        print("Хэрэглээ: python file_reader.py <filepath>")
+        filepath = input("File path to read: ")
+    else:
+        filepath = sys.argv[1]
 
-    print("Program has ended")
+    try:
+        print(read_file(filepath))
+    except (FileNotFoundError, PermissionError) as e:
+        print(f"Алдаа гарлаа: {e}")
 
 if __name__ == "__main__":
     main()
-    
